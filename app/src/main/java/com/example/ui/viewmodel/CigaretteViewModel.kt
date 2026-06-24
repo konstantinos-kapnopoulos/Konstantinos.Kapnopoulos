@@ -99,7 +99,7 @@ class CigaretteViewModel(
 
     val statsDaily: StateFlow<List<DailyStat>> = recordsMap.map { records ->
         val list = mutableListOf<DailyStat>()
-        val dayFormat = SimpleDateFormat("E", Locale("el")) // Greek short day (ΔΕΥ, ΤΡΙ)
+        val dayFormat = SimpleDateFormat("E", Locale.forLanguageTag("el")) // Greek short day (ΔΕΥ, ΤΡΙ)
         val keyFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
         
         for (i in 6 downTo 0) {
@@ -138,7 +138,7 @@ class CigaretteViewModel(
 
     val statsMonthly: StateFlow<List<MonthlyStat>> = recordsMap.map { records ->
         val list = mutableListOf<MonthlyStat>()
-        val monthFormat = SimpleDateFormat("MMM", Locale("el")) // Greek short month (ΙΑΝ, ΦΕΒ)
+        val monthFormat = SimpleDateFormat("MMM", Locale.forLanguageTag("el")) // Greek short month (ΙΑΝ, ΦΕΒ)
         
         for (i in 5 downTo 0) {
             val tempCal = Calendar.getInstance()

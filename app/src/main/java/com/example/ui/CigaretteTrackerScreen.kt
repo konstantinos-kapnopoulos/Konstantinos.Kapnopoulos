@@ -23,8 +23,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DateRange
@@ -954,7 +954,7 @@ fun CalendarTab(viewModel: CigaretteViewModel) {
                         modifier = Modifier.testTag("prev_month_button")
                     ) {
                         Icon(
-                            imageVector = Icons.Default.ArrowBack,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Προηγούμενος Μήνας",
                             tint = MaterialTheme.colorScheme.primary
                         )
@@ -972,7 +972,7 @@ fun CalendarTab(viewModel: CigaretteViewModel) {
                         modifier = Modifier.testTag("next_month_button")
                     ) {
                         Icon(
-                            imageVector = Icons.Default.ArrowForward,
+                            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
                             contentDescription = "Επόμενος Μήνας",
                             tint = MaterialTheme.colorScheme.primary
                         )
@@ -1118,7 +1118,7 @@ fun GoalSettingsDialog(
                     }
                 }
 
-                Divider(color = MaterialTheme.colorScheme.surfaceVariant)
+                HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
 
                 // 2. Reminders Toggle
                 Row(
