@@ -48,8 +48,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.compose.animation.animateColorAsState
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.ui.theme.PastelAccent
+import com.example.ui.theme.PastelError
+import com.example.ui.theme.PastelPrimary
+import com.example.ui.theme.PastelSurfaceVariant
+import com.example.ui.theme.PastelTertiary
 import com.example.ui.viewmodel.CalendarDay
 import com.example.ui.viewmodel.CigaretteViewModel
 import com.example.ui.viewmodel.DailyStat
@@ -273,6 +279,32 @@ fun HomeTab(
         selectedDate == todayStr
     }
 
+    val targetCircleBgColor = remember(currentCount) {
+        when {
+            currentCount >= 20 -> Color(0xFFFCE4E4)       // Soft pastel light red
+            currentCount >= 13 -> Color(0xFFE3F2FD)       // Soft pastel light blue
+            else -> PastelTertiary                        // Default pastel mint green
+        }
+    }
+    val targetCircleTextColor = remember(currentCount) {
+        when {
+            currentCount >= 20 -> Color(0xFF78281F)       // Deep elegant dark red for contrast
+            currentCount >= 13 -> Color(0xFF1B4F72)       // Deep elegant dark blue for contrast
+            else -> PastelAccent                          // Default deep sage/emerald
+        }
+    }
+    val targetPrimaryThemeColor = remember(currentCount) {
+        when {
+            currentCount >= 20 -> PastelError             // Soft pastel coral-red
+            currentCount >= 13 -> Color(0xFF5DADE2)       // Gentle pastel blue
+            else -> PastelPrimary                         // Default elegant pastel green
+        }
+    }
+
+    val circleBgColor by animateColorAsState(targetValue = targetCircleBgColor, label = "circleBg")
+    val circleTextColor by animateColorAsState(targetValue = targetCircleTextColor, label = "circleText")
+    val primaryThemeColor by animateColorAsState(targetValue = targetPrimaryThemeColor, label = "primaryTheme")
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -319,7 +351,7 @@ fun HomeTab(
                 Icon(
                     imageVector = Icons.Default.Settings,
                     contentDescription = "Ρυθμίσεις Στόχου",
-                    tint = MaterialTheme.colorScheme.primary,
+                    tint = primaryThemeColor,
                     modifier = Modifier.size(20.dp)
                 )
             }
@@ -337,7 +369,7 @@ fun HomeTab(
                     .size(240.dp)
                     .shadow(elevation = 16.dp, shape = CircleShape, clip = false)
                     .background(
-                        color = MaterialTheme.colorScheme.tertiary,
+                        color = circleBgColor,
                         shape = CircleShape
                     )
                     .border(
@@ -354,14 +386,14 @@ fun HomeTab(
                         text = currentCount.toString(),
                         fontSize = 72.sp,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onTertiary,
+                        color = circleTextColor,
                         modifier = Modifier.testTag("cigarettes_count_display")
                     )
                     Text(
                         text = if (currentCount == 1) "ΤΣΙΓΑΡΟ" else "ΤΣΙΓΑΡΑ",
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary,
+                        color = primaryThemeColor,
                         letterSpacing = 2.sp,
                         modifier = Modifier.padding(top = 2.dp)
                     )
@@ -400,7 +432,7 @@ fun HomeTab(
                         Icon(
                             imageVector = if (isLimitExceeded) Icons.Default.Warning else Icons.Default.Check,
                             contentDescription = "Κατάσταση",
-                            tint = if (isLimitExceeded) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                            tint = if (isLimitExceeded) MaterialTheme.colorScheme.error else primaryThemeColor,
                             modifier = Modifier.size(16.dp)
                         )
                         Text(
@@ -414,7 +446,7 @@ fun HomeTab(
                         text = "$currentCount / $dailyGoal",
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Bold,
-                        color = if (isLimitExceeded) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary
+                        color = if (isLimitExceeded) MaterialTheme.colorScheme.error else primaryThemeColor
                     )
                 }
 
@@ -424,7 +456,7 @@ fun HomeTab(
                         .fillMaxWidth()
                         .height(8.dp)
                         .clip(RoundedCornerShape(4.dp)),
-                    color = if (isLimitExceeded) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                    color = if (isLimitExceeded) MaterialTheme.colorScheme.error else primaryThemeColor,
                     trackColor = MaterialTheme.colorScheme.surfaceVariant
                 )
 
@@ -480,7 +512,7 @@ fun HomeTab(
                     .size(96.dp)
                     .shadow(elevation = 10.dp, shape = RoundedCornerShape(40.dp))
                     .background(
-                        color = MaterialTheme.colorScheme.primary,
+                        color = primaryThemeColor,
                         shape = RoundedCornerShape(40.dp)
                     )
                     .testTag("increment_button")

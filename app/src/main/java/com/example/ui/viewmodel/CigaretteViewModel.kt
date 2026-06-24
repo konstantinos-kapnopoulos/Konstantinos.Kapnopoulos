@@ -291,6 +291,7 @@ class CigaretteViewModel(
         val date = _selectedDate.value
         val count = currentCount.value
         val newCount = count + 1
+        CigaretteSoundPlayer.playDrum(viewModelScope)
         viewModelScope.launch {
             repository.saveRecord(date, newCount)
             if (date == todayString) {
@@ -303,6 +304,7 @@ class CigaretteViewModel(
         val date = _selectedDate.value
         val count = currentCount.value
         if (count > 0) {
+            CigaretteSoundPlayer.playHighPitch(viewModelScope)
             viewModelScope.launch {
                 repository.saveRecord(date, count - 1)
             }
