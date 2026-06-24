@@ -1,0 +1,6 @@
+{
+  "name": "Ημερολόγιο Τσιγάρων",
+  "description": "Ένα κομψό ημερολόγιο καπνίσματος με ημερήσιους στόχους, ειδοποιήσεις υπενθύμισης και αναλυτικά στατιστικά με γραφήματα.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

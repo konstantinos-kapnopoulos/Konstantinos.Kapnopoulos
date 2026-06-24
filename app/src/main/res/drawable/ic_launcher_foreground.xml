@@ -1,0 +1,52 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Decorative background glow -->
+    <path
+        android:fillColor="#1A2D2A"
+        android:pathData="M54,54m-42,0a42,42 0,1 1,84 0a42,42 0,1 1,-84 0" />
+
+    <!-- Calendar card plate -->
+    <path
+        android:fillColor="#2C3E3A"
+        android:strokeColor="#00BFA5"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M34,36h40c2.2,0 4,1.8 4,4v32c0,2.2 -1.8,4 -4,4h-40c-2.2,0 -4,-1.8 -4,-4v-32c0,-2.2 1.8,-4 4,-4z" />
+
+    <!-- Calendar top colored bar -->
+    <path
+        android:fillColor="#00BFA5"
+        android:pathData="M34,36h40c2.2,0 4,1.8 4,4v8h-48v-8c0,-2.2 1.8,-4 4,-4z" />
+
+    <!-- Calendar rings -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M42,30h4v10h-4z M62,30h4v10h-4z" />
+
+    <!-- Cigarette Filter (orange-gold) -->
+    <path
+        android:fillColor="#FFAB40"
+        android:pathData="M42,62h8v6h-8z" />
+
+    <!-- Cigarette Paper (white/off-white) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,62h14v6h-14z" />
+
+    <!-- Ember tip glow (vibrant red/orange) -->
+    <path
+        android:fillColor="#FF3D00"
+        android:pathData="M64,62h2v6h-2z" />
+
+    <!-- Stylized Smoke Coils -->
+    <path
+        android:strokeColor="#00BFA5"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M66,54c1,-3 -1,-5 1,-7 M70,55c1.5,-2.5 0.5,-4 1.5,-5.5" />
+</vector>
